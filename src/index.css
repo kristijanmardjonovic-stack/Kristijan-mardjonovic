@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  
+  --color-bistro-gold: #c49a62;
+  --color-bistro-gold-dark: #a87e49;
+  --color-bistro-cream: #faf8f5;
+  --color-bistro-sand: #f3eee7;
+  --color-bistro-dark: #1e1915;
+  --color-bistro-charcoal: #332d28;
+  --color-bistro-muted: #736b63;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bistro-cream);
+  color: var(--color-bistro-dark);
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+html, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bistro-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-bistro-gold);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-bistro-gold-dark);
+}

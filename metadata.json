@@ -1,0 +1,6 @@
+{
+  "name": "Caffee&Food",
+  "description": "Moderan, interaktivni i višejezični meni za restoran Caffee&Food sa pretragom, filterima alergena, favoritima i simulatorom porudžbine.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
