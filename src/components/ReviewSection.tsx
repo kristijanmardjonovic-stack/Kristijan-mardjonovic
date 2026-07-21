@@ -83,7 +83,7 @@ export default function ReviewSection({ lang, reviews, onAddReview }: ReviewSect
                       <Star
                         key={idx}
                         className={`w-3.5 h-3.5 ${
-                          idx < rev.rating ? 'fill-bistro-gold text-bistro-gold' : 'text-gray-200'
+                          idx < rev.rating ? 'fill-amber-500 text-amber-500' : 'text-gray-200'
                         }`}
                       />
                     ))}
@@ -164,7 +164,7 @@ export default function ReviewSection({ lang, reviews, onAddReview }: ReviewSect
                         >
                           <Star
                             className={`w-6 h-6 transition-colors ${
-                              active ? 'fill-bistro-gold text-bistro-gold' : 'text-gray-200'
+                              active ? 'fill-amber-500 text-amber-500' : 'text-gray-200'
                             }`}
                           />
                         </button>
@@ -196,7 +196,7 @@ export default function ReviewSection({ lang, reviews, onAddReview }: ReviewSect
                 <button
                   type="submit"
                   id="submit-review-btn"
-                  className="w-full py-3 bg-bistro-gold hover:bg-bistro-gold-dark text-bistro-dark font-semibold rounded-xl text-sm shadow-md transition-all cursor-pointer"
+                  className="w-full py-3 bg-bistro-gold hover:bg-bistro-gold-dark text-white font-semibold rounded-xl text-sm shadow-md transition-all cursor-pointer"
                 >
                   {DICTIONARY.submitReview[lang]}
                 </button>

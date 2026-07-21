@@ -175,50 +175,6 @@ export const DISHES: Dish[] = [
     ingredients: { sr: ['Ćevapi', 'Lepinja', 'Luk', 'Pomfrit'], en: ['Cevapi', 'Lepinja bread', 'Onions', 'French fries'], sq: ['Qebapë', 'Bukë lepinja', 'Qepë', 'Patate'] }
   },
 
-  // --- PIZZA (Pica) ---
-  {
-    id: 'piz_1',
-    name: { sr: 'Margherita', en: 'Margherita Pizza', sq: 'Pica Margherita' },
-    description: { sr: 'Pelat od paradajza, sveža mocarela, maslinovo ulje i bosiljak.', en: 'Tomato sauce, fresh mozzarella cheese, olive oil, and fresh basil.', sq: 'Salcë domateje, mocarelë e freskët, vaj ulliri dhe borzilok.' },
-    price: 7.00,
-    category: Category.PIZZA,
-    image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500&auto=format&fit=crop&q=80',
-    allergens: ['gluten', 'dairy'],
-    dietary: ['veg'],
-    calories: 780,
-    prepTime: 10,
-    featured: true,
-    ingredients: { sr: ['Pelat', 'Mocarela', 'Bosiljak'], en: ['Tomato sauce', 'Mozzarella', 'Basil'], sq: ['Salcë domate', 'Mocarelë', 'Borzilok'] }
-  },
-  {
-    id: 'piz_2',
-    name: { sr: 'Capricciosa', en: 'Capricciosa Pizza', sq: 'Pica Kapričoza' },
-    description: { sr: 'Pelat od paradajza, mocarela, šunka, šampinjoni i masline.', en: 'Tomato sauce, mozzarella, savory ham, fresh mushrooms, and olives.', sq: 'Salcë domateje, mocarelë, prshutë, kërpudha dhe ullinj.' },
-    price: 8.50,
-    category: Category.PIZZA,
-    image: 'https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=500&auto=format&fit=crop&q=80',
-    allergens: ['gluten', 'dairy'],
-    dietary: [],
-    calories: 890,
-    prepTime: 10,
-    featured: true,
-    ingredients: { sr: ['Pelat', 'Mocarela', 'Šunka', 'Šampinjoni'], en: ['Tomato sauce', 'Mozzarella', 'Ham', 'Mushrooms'], sq: ['Salcë domate', 'Mocarelë', 'Prshutë', 'Kërpudha'] }
-  },
-  {
-    id: 'piz_3',
-    name: { sr: 'Caffee & Food Pizza', en: 'Signature House Pizza', sq: 'Pica Speciateti i Shtëpisë' },
-    description: { sr: 'Sos od paradajza, mocarela, goveđi pršut, kajmak, rukola i čeri.', en: 'Our signature pizza with beef prosciutto, fresh kajmak cream, and arugula.', sq: 'Pica speciale me prshutë gjedhi, kajmak shtëpie, rrukola dhe domate.' },
-    price: 9.50,
-    category: Category.PIZZA,
-    image: 'https://images.unsplash.com/photo-1534308983496-4fabb1a015ee?w=500&auto=format&fit=crop&q=80',
-    allergens: ['gluten', 'dairy'],
-    dietary: [],
-    calories: 995,
-    prepTime: 12,
-    featured: true,
-    ingredients: { sr: ['Goveđi pršut', 'Kajmak', 'Rukola', 'Čeri'], en: ['Beef prosciutto', 'Kajmak cream', 'Arugula', 'Cherry'], sq: ['Prshutë gjedhi', 'Kajmak', 'Rrukola', 'Qershi'] }
-  },
-
   // --- HOT DRINKS (Kafa & Topli napici) ---
   {
     id: 'drk_espresso',
@@ -1385,7 +1341,6 @@ export const DICTIONARY = {
   allCategories: { sr: 'Sva jela', en: 'All Dishes', sq: 'Të gjitha' },
   breakfast: { sr: 'Doručak', en: 'Breakfast', sq: 'Mëngjes' },
   food: { sr: 'Hrana', en: 'Food', sq: 'Ushqim' },
-  pizza: { sr: 'Pice', en: 'Pizza', sq: 'Pica' },
   hot_drinks: { sr: 'Topli napici', en: 'Hot Drinks', sq: 'Pije të Ngrohta' },
   non_alcoholic: { sr: 'Sokovi i pića', en: 'Soft Drinks & Juices', sq: 'Lëngje & Pije' },
   beers: { sr: 'Piva', en: 'Beers', sq: 'Birra' },

@@ -27,7 +27,7 @@ export default function MenuGrid({
   const [showFilters, setShowFilters] = useState(false);
 
   // Groupings of categories
-  const FOOD_CATEGORIES = [Category.BREAKFAST, Category.FOOD, Category.PIZZA, Category.DESSERTS];
+  const FOOD_CATEGORIES = [Category.BREAKFAST, Category.FOOD, Category.DESSERTS];
   const DRINKS_CATEGORIES = [
     Category.HOT_DRINKS,
     Category.NON_ALCOHOLIC,
@@ -40,7 +40,6 @@ export default function MenuGrid({
   const CATEGORY_ORDER = [
     Category.BREAKFAST,
     Category.FOOD,
-    Category.PIZZA,
     Category.DESSERTS,
     Category.HOT_DRINKS,
     Category.NON_ALCOHOLIC,
@@ -146,7 +145,6 @@ export default function MenuGrid({
   const categoryIcons: Record<Category, string> = {
     [Category.BREAKFAST]: '🍳',
     [Category.FOOD]: '🍔',
-    [Category.PIZZA]: '🍕',
     [Category.HOT_DRINKS]: '☕',
     [Category.NON_ALCOHOLIC]: '🥤',
     [Category.BEERS]: '🍺',

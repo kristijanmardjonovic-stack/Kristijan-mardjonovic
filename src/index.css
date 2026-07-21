@@ -5,13 +5,13 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   
-  --color-bistro-gold: #c49a62;
-  --color-bistro-gold-dark: #a87e49;
-  --color-bistro-cream: #faf8f5;
-  --color-bistro-sand: #f3eee7;
-  --color-bistro-dark: #1e1915;
-  --color-bistro-charcoal: #332d28;
-  --color-bistro-muted: #736b63;
+  --color-bistro-gold: #15803d;
+  --color-bistro-gold-dark: #14532d;
+  --color-bistro-cream: #ffffff;
+  --color-bistro-sand: #f0f5f1;
+  --color-bistro-dark: #0f1712;
+  --color-bistro-charcoal: #1a291f;
+  --color-bistro-muted: #64746b;
 }
 
 body {

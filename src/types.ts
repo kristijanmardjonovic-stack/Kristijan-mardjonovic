@@ -1,7 +1,6 @@
 export enum Category {
   BREAKFAST = 'breakfast',
   FOOD = 'food',
-  PIZZA = 'pizza',
   HOT_DRINKS = 'hot_drinks',
   NON_ALCOHOLIC = 'non_alcoholic',
   BEERS = 'beers',

@@ -8,7 +8,6 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Sparkles, Utensils, Heart, Check, Info, ArrowUp, QrCode, ArrowLeft, Languages } from 'lucide-react';
 import Header from './components/Header';
 import MenuGrid from './components/MenuGrid';
-import MezeBuilder from './components/MezeBuilder';
 import DishModal from './components/DishModal';
 import ReviewSection from './components/ReviewSection';
 import DecoratedQrCode from './components/DecoratedQrCode';
@@ -73,7 +72,6 @@ export default function App() {
   }, [reviews]);
 
   // Scroll target refs
-  const mezeSectionRef = useRef<HTMLDivElement>(null);
   const reviewsSectionRef = useRef<HTMLDivElement>(null);
 
   // 4. Action Helpers & Multi-Language Toasts
@@ -123,10 +121,6 @@ export default function App() {
   const handleAddReview = (newReview: Review) => {
     setReviews((prev) => [newReview, ...prev]);
     triggerToast(getToastMsg('reviewThanks'), 'success');
-  };
-
-  const handleScrollToMeze = () => {
-    mezeSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleScrollToReviews = () => {
@@ -346,7 +340,6 @@ export default function App() {
             setLang={setLang}
             favoritesCount={favorites.length}
             scrollToReviews={handleScrollToReviews}
-            scrollToMeze={handleScrollToMeze}
             onOpenQrCode={() => setShowQrModal(true)}
           />
 
@@ -467,13 +460,6 @@ export default function App() {
                 onOpenDetails={(dish) => setSelectedDish(dish)}
               />
             </section>
-
-            {/* Traditional Meze builder */}
-            <div ref={mezeSectionRef} className="scroll-mt-10">
-              <MezeBuilder
-                lang={lang}
-              />
-            </div>
 
             {/* Reviews list section */}
             <div ref={reviewsSectionRef} className="scroll-mt-10">
