@@ -1,4 +1,4 @@
-import { Globe, Clock, MapPin, ShoppingBag, Heart, QrCode, Sparkles } from 'lucide-react';
+import { Globe, Clock, MapPin, ShoppingBag, Heart, QrCode, Sparkles, Instagram } from 'lucide-react';
 import { DICTIONARY } from '../data';
 import { Language } from '../types';
 
@@ -90,6 +90,18 @@ export default function Header({
               <QrCode className="w-4 h-4" />
             </button>
 
+            {/* Instagram Link Button */}
+            <a
+              href="https://www.instagram.com/coffeeandfood.cafe?igsh=MWF6NXI4aGJ6N2ZzMg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              id="instagram-top-btn"
+              className="p-2 bg-emerald-800 hover:bg-emerald-700 border border-white/20 rounded-full transition-all text-white cursor-pointer flex items-center justify-center"
+              title="Instagram Porudžbine @coffeeandfood.cafe"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+
             {/* Quick scrolls */}
             <button
               id="scroll-to-reviews"
@@ -115,7 +127,7 @@ export default function Header({
             <MapPin className="w-4 h-4 text-white shrink-0" />
             <div>
               <p className="font-medium text-bistro-cream">
-                {lang === 'sq' ? 'Bulevardi Teuta p.n.' : 'Bulevar Teuta bb'}
+                {lang === 'sq' ? 'Bratica p.n.' : 'Bratica bb'}
               </p>
               <p className="text-[10px] text-white/70">
                 {lang === 'sq' ? 'Ulqin, Mal i Zi' : lang === 'sr' ? 'Ulcinj, Crna Gora' : 'Ulcinj, Montenegro'}
@@ -133,17 +145,32 @@ export default function Header({
               </p>
             </div>
           </div>
-          <div className="flex items-center justify-center md:justify-start gap-2.5 bg-bistro-charcoal/40 p-3 rounded-lg border border-bistro-cream/5">
-            <Sparkles className="w-4 h-4 text-white shrink-0 animate-pulse" />
+          <a
+            href="https://www.instagram.com/coffeeandfood.cafe?igsh=MWF6NXI4aGJ6N2ZzMg=="
+            target="_blank"
+            rel="noopener noreferrer"
+            id="instagram-order-card"
+            className="flex items-center justify-center md:justify-start gap-2.5 bg-emerald-800/80 hover:bg-emerald-700 p-3 rounded-lg border border-white/20 transition-all cursor-pointer group shadow-sm"
+          >
+            <div className="p-1.5 bg-white/10 rounded-full group-hover:scale-110 transition-transform">
+              <Instagram className="w-4 h-4 text-white shrink-0" />
+            </div>
             <div>
-              <p className="font-semibold text-white tracking-wide">
-                {lang === 'sr' ? 'Dobrodošli i prijatno!' : lang === 'sq' ? 'Mirëseerdhët & Ju bëftë mirë!' : 'Welcome & Enjoy!'}
+              <p className="font-semibold text-white tracking-wide flex items-center gap-1.5">
+                <span>
+                  {lang === 'sr' && 'Poručite hranu (Instagram)'}
+                  {lang === 'sq' && 'Porositni ushqim (Instagram)'}
+                  {lang === 'en' && 'Order Food (Instagram)'}
+                </span>
+                <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full font-sans">↗</span>
               </p>
-              <p className="text-[10px] text-white/70">
-                {lang === 'sr' ? '❦ Tradicija ukusa' : lang === 'sq' ? '❦ Traditë e shijes' : '❦ Tradition of taste'}
+              <p className="text-[10px] text-white/80">
+                {lang === 'sr' && 'Kliknite za porudžbine @coffeeandfood.cafe'}
+                {lang === 'sq' && 'Kliko për porosi @coffeeandfood.cafe'}
+                {lang === 'en' && 'Click to order @coffeeandfood.cafe'}
               </p>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </header>

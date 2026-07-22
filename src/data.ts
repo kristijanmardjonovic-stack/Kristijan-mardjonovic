@@ -1279,29 +1279,7 @@ export const MEZE_INGREDIENTS: MezeIngredient[] = [
   }
 ];
 
-export const REVIEWS: Review[] = [
-  {
-    id: 'rev_1',
-    author: 'Nikola P.',
-    rating: 5,
-    comment: 'Hobotnica je prosto neverovatna, topi se u ustima! Izuzetan ambijent i vrhunski vinski asortiman.',
-    date: '2026-07-15'
-  },
-  {
-    id: 'rev_2',
-    author: 'Sarah M.',
-    rating: 5,
-    comment: 'The Njegusi Platter combined with the local Vranac wine was a celestial experience. Service is impeccable, and the digital menu is beautifully done!',
-    date: '2026-07-18'
-  },
-  {
-    id: 'rev_3',
-    author: 'Marko J.',
-    rating: 4,
-    comment: 'Odlična pljeskavica, veoma obilna i sočna. Brza usluga i prelep ambijent restorana pored mora.',
-    date: '2026-07-19'
-  }
-];
+export const REVIEWS: Review[] = [];
 
 export const DIETARY_LABELS = {
   veg: {

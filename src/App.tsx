@@ -38,7 +38,16 @@ export default function App() {
 
   const [reviews, setReviews] = useState<Review[]>(() => {
     const saved = localStorage.getItem('amfora_reviews');
-    return saved ? JSON.parse(saved) : REVIEWS;
+    if (saved) {
+      try {
+        const parsed: Review[] = JSON.parse(saved);
+        // Filter out old mock reviews
+        return parsed.filter((r) => !['rev_1', 'rev_2', 'rev_3'].includes(r.id));
+      } catch {
+        return [];
+      }
+    }
+    return REVIEWS;
   });
 
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
