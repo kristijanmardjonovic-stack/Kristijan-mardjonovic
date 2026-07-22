@@ -1,10 +1,13 @@
-import { Globe, Clock, MapPin, ShoppingBag, Heart, QrCode, Sparkles, Instagram } from 'lucide-react';
+import { Globe, Clock, MapPin, ShoppingBag, Heart, QrCode, Sparkles, Instagram, Sun, Moon } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
 import { DICTIONARY } from '../data';
 import { Language } from '../types';
 
 interface HeaderProps {
   lang: Language;
   setLang: (lang: Language) => void;
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
   favoritesCount: number;
   scrollToReviews: () => void;
   onOpenQrCode: () => void;
@@ -13,6 +16,8 @@ interface HeaderProps {
 export default function Header({
   lang,
   setLang,
+  theme,
+  toggleTheme,
   favoritesCount,
   scrollToReviews,
   onOpenQrCode,
@@ -80,44 +85,98 @@ export default function Header({
               </button>
             </div>
 
+            {/* Theme Toggle Button */}
+            <motion.button
+              id="theme-toggle-btn"
+              whileTap={{ scale: 0.88, rotate: 45 }}
+              whileHover={{ scale: 1.08 }}
+              onClick={toggleTheme}
+              className="p-2 bg-bistro-charcoal hover:bg-white/15 border border-white/20 rounded-full transition-all text-white cursor-pointer flex items-center justify-center gap-1 shadow-xs"
+              title={theme === 'dark' ? 'Svetli režim (Light mode)' : 'Tamni režim (Dark mode)'}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {theme === 'dark' ? (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun className="w-4 h-4 text-amber-400" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon className="w-4 h-4 text-emerald-300" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+
             {/* QR Code Trigger */}
-            <button
+            <motion.button
               id="qr-code-trigger-btn"
+              whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.08 }}
               onClick={onOpenQrCode}
               className="p-2 bg-bistro-charcoal hover:bg-white/15 border border-white/20 rounded-full transition-all text-white cursor-pointer"
               title="Meni QR Code"
             >
               <QrCode className="w-4 h-4" />
-            </button>
+            </motion.button>
 
             {/* Instagram Link Button */}
-            <a
+            <motion.a
               href="https://www.instagram.com/coffeeandfood.cafe?igsh=MWF6NXI4aGJ6N2ZzMg=="
               target="_blank"
               rel="noopener noreferrer"
               id="instagram-top-btn"
+              whileTap={{ scale: 0.92 }}
+              whileHover={{ scale: 1.08 }}
               className="p-2 bg-emerald-800 hover:bg-emerald-700 border border-white/20 rounded-full transition-all text-white cursor-pointer flex items-center justify-center"
               title="Instagram Porudžbine @coffeeandfood.cafe"
             >
               <Instagram className="w-4 h-4" />
-            </a>
+            </motion.a>
 
             {/* Quick scrolls */}
-            <button
+            <motion.button
               id="scroll-to-reviews"
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.04 }}
               onClick={scrollToReviews}
               className="text-xs px-3 py-2 bg-bistro-charcoal hover:bg-white/10 border border-white/20 rounded-full transition-all text-white cursor-pointer font-medium"
             >
               ⭐ {DICTIONARY.guestReviews[lang]}
-            </button>
+            </motion.button>
 
             {/* Favorites Badge */}
-            {favoritesCount > 0 && (
-              <div className="flex items-center gap-1 bg-red-950/40 border border-red-500/30 px-2.5 py-1.5 rounded-full text-xs text-red-400">
-                <Heart className="w-3.5 h-3.5 fill-current" />
-                <span className="font-bold">{favoritesCount}</span>
-              </div>
-            )}
+            <AnimatePresence>
+              {favoritesCount > 0 && (
+                <motion.div
+                  initial={{ scale: 0, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0, opacity: 0 }}
+                  className="flex items-center gap-1 bg-red-950/40 border border-red-500/30 px-2.5 py-1.5 rounded-full text-xs text-red-400"
+                >
+                  <Heart className="w-3.5 h-3.5 fill-current animate-pulse" />
+                  <motion.span
+                    key={favoritesCount}
+                    initial={{ scale: 1.4 }}
+                    animate={{ scale: 1 }}
+                    className="font-bold"
+                  >
+                    {favoritesCount}
+                  </motion.span>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 

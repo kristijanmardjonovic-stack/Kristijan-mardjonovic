@@ -184,25 +184,33 @@ export default function MenuGrid({
   return (
     <div id="menu-grid-workspace" className="space-y-6 w-full max-w-full overflow-hidden">
       {/* Super Category Switcher - Segment Control */}
-      <div className="w-full grid grid-cols-3 gap-1 p-1 bg-bistro-sand rounded-2xl max-w-lg mx-auto border border-bistro-gold/10 shadow-xs">
+      <div className="w-full grid grid-cols-3 gap-1 p-1 bg-bistro-sand dark:bg-[#122016] rounded-2xl max-w-lg mx-auto border border-bistro-gold/10 dark:border-white/10 shadow-xs relative">
         {(['all', 'food', 'drinks'] as const).map((sc) => {
           const active = superCategory === sc;
           return (
-            <button
+            <motion.button
               key={sc}
               id={`super-cat-tab-${sc}`}
+              whileTap={{ scale: 0.96 }}
               onClick={() => {
                 setSuperCategory(sc);
                 setSelectedCategory('all');
               }}
-              className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer flex items-center justify-center text-center leading-tight ${
+              className={`relative py-2.5 px-2 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-colors duration-200 cursor-pointer flex items-center justify-center text-center leading-tight z-10 ${
                 active
-                  ? 'bg-bistro-dark text-bistro-cream shadow-sm font-extrabold'
-                  : 'text-bistro-charcoal hover:bg-white/40'
+                  ? 'text-bistro-cream dark:text-white font-extrabold'
+                  : 'text-bistro-charcoal dark:text-emerald-100 hover:text-bistro-dark dark:hover:text-white'
               }`}
             >
-              {superCategoryLabels[sc][lang]}
-            </button>
+              {active && (
+                <motion.div
+                  layoutId="activeSuperCatPill"
+                  className="absolute inset-0 bg-bistro-dark dark:bg-emerald-800 rounded-xl shadow-sm -z-10"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{superCategoryLabels[sc][lang]}</span>
+            </motion.button>
           );
         })}
       </div>
@@ -212,19 +220,19 @@ export default function MenuGrid({
         {/* Search Input and Filter Toggle */}
         <div className="flex flex-col sm:flex-row gap-3">
           <div className="relative flex-1">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-bistro-muted" />
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-bistro-muted dark:text-emerald-200/60" />
             <input
               id="menu-search-input"
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={DICTIONARY.searchPlaceholder[lang]}
-              className="w-full pl-10 pr-4 py-3 bg-white border border-bistro-gold/15 focus:border-bistro-gold outline-none rounded-xl text-sm transition-all shadow-xs"
+              className="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#142318] border border-bistro-gold/15 dark:border-white/15 focus:border-emerald-600 outline-none rounded-xl text-sm transition-all shadow-xs text-bistro-dark dark:text-white placeholder:text-bistro-muted dark:placeholder:text-emerald-200/50"
             />
             {search && (
               <button
                 onClick={() => setSearch('')}
-                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-bistro-muted hover:text-bistro-dark cursor-pointer"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-bistro-muted dark:text-emerald-200/60 hover:text-bistro-dark dark:hover:text-white cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -236,14 +244,14 @@ export default function MenuGrid({
             onClick={() => setShowFilters(!showFilters)}
             className={`px-4 py-3 border rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 transition-all cursor-pointer ${
               showFilters || selectedDietary.length > 0
-                ? 'bg-bistro-gold text-bistro-dark border-bistro-gold-dark shadow-sm'
-                : 'bg-white border-bistro-gold/15 hover:border-bistro-gold/30 text-bistro-charcoal'
+                ? 'bg-bistro-gold dark:bg-emerald-700 text-bistro-dark dark:text-white border-bistro-gold-dark shadow-sm'
+                : 'bg-white dark:bg-[#142318] border-bistro-gold/15 dark:border-white/15 hover:border-bistro-gold/30 text-bistro-charcoal dark:text-emerald-100'
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
             <span>{DICTIONARY.dietaryFilter[lang]}</span>
             {selectedDietary.length > 0 && (
-              <span className="bg-bistro-dark text-bistro-cream font-bold text-xxs w-4.5 h-4.5 rounded-full flex items-center justify-center">
+              <span className="bg-bistro-dark dark:bg-emerald-950 text-bistro-cream dark:text-white font-bold text-xxs w-4.5 h-4.5 rounded-full flex items-center justify-center">
                 {selectedDietary.length}
               </span>
             )}
@@ -260,10 +268,10 @@ export default function MenuGrid({
               exit={{ height: 0, opacity: 0 }}
               className="overflow-hidden"
             >
-              <div className="bg-white border border-bistro-gold/10 p-4 rounded-xl shadow-xs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-1">
+              <div className="bg-white dark:bg-[#142318] border border-bistro-gold/10 dark:border-white/10 p-4 rounded-xl shadow-xs grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-1">
                 {/* Dietary Tags Selectors */}
                 <div className="sm:col-span-2 lg:col-span-3 space-y-2">
-                  <span className="text-xxs uppercase tracking-wider font-bold text-bistro-muted block mb-1">
+                  <span className="text-xxs uppercase tracking-wider font-bold text-bistro-muted dark:text-emerald-200/70 block mb-1">
                     🌱 {DICTIONARY.dietaryFilter[lang]}
                   </span>
                   <div className="flex flex-wrap gap-2">
@@ -277,7 +285,7 @@ export default function MenuGrid({
                           className={`text-xs px-3 py-1.5 rounded-full border flex items-center gap-1.5 transition-all cursor-pointer ${
                             isActive
                               ? `${value.color} scale-102 border-current ring-1 ring-bistro-gold/30`
-                              : 'bg-bistro-cream text-bistro-muted border-bistro-gold/10 hover:border-bistro-gold/35'
+                              : 'bg-bistro-cream dark:bg-[#1a2c20] text-bistro-muted dark:text-emerald-200/80 border-bistro-gold/10 dark:border-white/10 hover:border-bistro-gold/35'
                           }`}
                         >
                           <span>{value.icon}</span>
@@ -292,16 +300,16 @@ export default function MenuGrid({
                 <div>
                   <label
                     htmlFor="sort-menu-by"
-                    className="text-xxs uppercase tracking-wider font-bold text-bistro-muted block mb-1"
+                    className="text-xxs uppercase tracking-wider font-bold text-bistro-muted dark:text-emerald-200/70 block mb-1"
                   >
-                    <ArrowUpDown className="w-3.5 h-3.5 inline mr-1 text-bistro-gold" />
+                    <ArrowUpDown className="w-3.5 h-3.5 inline mr-1 text-bistro-gold dark:text-emerald-400" />
                     {DICTIONARY.sortBy[lang]}
                   </label>
                   <select
                     id="sort-menu-by"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
-                    className="w-full text-xs bg-bistro-cream border border-bistro-gold/15 focus:border-bistro-gold outline-none p-2 rounded-lg font-medium text-bistro-dark transition-all"
+                    className="w-full text-xs bg-bistro-cream dark:bg-[#1a2c20] border border-bistro-gold/15 dark:border-white/15 focus:border-emerald-600 outline-none p-2 rounded-lg font-medium text-bistro-dark dark:text-white transition-all"
                   >
                     <option value="price_asc">{DICTIONARY.priceAsc[lang]}</option>
                     <option value="price_desc">{DICTIONARY.priceDesc[lang]}</option>
@@ -316,47 +324,63 @@ export default function MenuGrid({
 
         {/* Category animated selector row - wrapped in overflow-x protection */}
         <div className="w-full max-w-full overflow-hidden">
-          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none snap-x">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-none snap-x relative">
             {/* ALL Category button */}
-            <button
+            <motion.button
               id="cat-tab-all"
+              whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 snap-center shrink-0 cursor-pointer ${
+              className={`relative px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors duration-200 snap-center shrink-0 cursor-pointer flex items-center gap-1.5 z-10 ${
                 selectedCategory === 'all'
-                  ? 'bg-bistro-dark text-bistro-cream font-bold shadow-sm'
-                  : 'bg-white hover:bg-bistro-sand border border-bistro-gold/10 text-bistro-charcoal'
+                  ? 'text-bistro-cream dark:text-white font-bold'
+                  : 'bg-white dark:bg-[#142318] hover:bg-bistro-sand dark:hover:bg-emerald-900/40 border border-bistro-gold/10 dark:border-white/10 text-bistro-charcoal dark:text-emerald-100'
               }`}
             >
-              {DICTIONARY.allCategories[lang]}
-              <span className={`text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full ${
-                selectedCategory === 'all' ? 'bg-bistro-gold text-bistro-dark' : 'bg-bistro-sand text-bistro-muted'
+              {selectedCategory === 'all' && (
+                <motion.div
+                  layoutId="activeCatPill"
+                  className="absolute inset-0 bg-bistro-dark dark:bg-emerald-800 rounded-full shadow-sm -z-10"
+                  transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{DICTIONARY.allCategories[lang]}</span>
+              <span className={`relative z-10 text-[10px] px-1.5 py-0.5 rounded-full ${
+                selectedCategory === 'all' ? 'bg-bistro-gold dark:bg-emerald-600 text-bistro-dark dark:text-white font-bold' : 'bg-bistro-sand dark:bg-[#1a2c20] text-bistro-muted dark:text-emerald-200/80'
               }`}>
                 {categoryCounts.all}
               </span>
-            </button>
+            </motion.button>
 
             {/* Individual categories */}
             {visibleCategories.map((cat) => {
               const count = categoryCounts[cat];
               const active = selectedCategory === cat;
               return (
-                <button
+                <motion.button
                   key={cat}
                   id={`cat-tab-${cat}`}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 snap-center shrink-0 cursor-pointer ${
+                  className={`relative px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-colors duration-200 snap-center shrink-0 cursor-pointer flex items-center gap-1.5 z-10 ${
                     active
-                      ? 'bg-bistro-dark text-bistro-cream font-bold shadow-sm'
-                      : 'bg-white hover:bg-bistro-sand border border-bistro-gold/10 text-bistro-charcoal'
+                      ? 'text-bistro-cream dark:text-white font-bold'
+                      : 'bg-white dark:bg-[#142318] hover:bg-bistro-sand dark:hover:bg-emerald-900/40 border border-bistro-gold/10 dark:border-white/10 text-bistro-charcoal dark:text-emerald-100'
                   }`}
                 >
-                  {DICTIONARY[cat] ? DICTIONARY[cat][lang] : cat}
-                  <span className={`text-[10px] ml-1.5 px-1.5 py-0.5 rounded-full ${
-                    active ? 'bg-bistro-gold text-bistro-dark' : 'bg-bistro-sand text-bistro-muted'
+                  {active && (
+                    <motion.div
+                      layoutId="activeCatPill"
+                      className="absolute inset-0 bg-bistro-dark dark:bg-emerald-800 rounded-full shadow-sm -z-10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{DICTIONARY[cat] ? DICTIONARY[cat][lang] : cat}</span>
+                  <span className={`relative z-10 text-[10px] px-1.5 py-0.5 rounded-full ${
+                    active ? 'bg-bistro-gold dark:bg-emerald-600 text-bistro-dark dark:text-white font-bold' : 'bg-bistro-sand dark:bg-[#1a2c20] text-bistro-muted dark:text-emerald-200/80'
                   }`}>
                     {count}
                   </span>
-                </button>
+                </motion.button>
               );
             })}
           </div>

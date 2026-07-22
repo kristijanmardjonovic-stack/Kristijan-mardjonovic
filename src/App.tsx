@@ -26,6 +26,11 @@ export default function App() {
   const [showQrModal, setShowQrModal] = useState(false);
 
   // 2. Core States with local storage integration
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    const saved = localStorage.getItem('caffee_food_theme');
+    return (saved === 'dark' || saved === 'light') ? saved : 'light';
+  });
+
   const [lang, setLang] = useState<Language>(() => {
     const saved = localStorage.getItem('amfora_lang');
     return (saved === 'sr' || saved === 'en' || saved === 'sq') ? (saved as Language) : 'sr';
@@ -51,6 +56,19 @@ export default function App() {
   });
 
   const [selectedDish, setSelectedDish] = useState<Dish | null>(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 350);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Custom Toast State
   const [toast, setToast] = useState<{ show: boolean; message: string; type: 'success' | 'info' }>({
@@ -67,7 +85,20 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // 3. Synchronization with Local Storage
+  // 3. Synchronization with Local Storage & Document Root
+  useEffect(() => {
+    localStorage.setItem('caffee_food_theme', theme);
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+  };
+
   useEffect(() => {
     localStorage.setItem('amfora_lang', lang);
   }, [lang]);
@@ -145,7 +176,7 @@ export default function App() {
   };
 
   return (
-    <div id="restaurant-root-applet" className="min-h-screen bg-bistro-cream flex flex-col justify-between selection:bg-bistro-gold selection:text-bistro-dark font-sans text-bistro-dark overflow-x-hidden">
+    <div id="restaurant-root-applet" className="min-h-screen bg-white dark:bg-[#0f1210] flex flex-col justify-between selection:bg-bistro-gold selection:text-bistro-dark font-sans text-bistro-dark dark:text-gray-100 overflow-x-hidden transition-colors duration-300">
       
       {/* 1. Splash Screen Overlay */}
       <AnimatePresence>
@@ -342,23 +373,25 @@ export default function App() {
 
       {/* 3. Main Interactive Menu (When not showing splash or landing) */}
       {(!showSplash && !isLanding) && (
-        <div id="active-menu-workspace" className="flex flex-col justify-between min-h-screen w-full overflow-x-hidden">
+        <div id="active-menu-workspace" className="flex flex-col justify-between min-h-screen w-full overflow-x-hidden bg-white dark:bg-[#08120a] text-bistro-dark dark:text-slate-100 transition-colors duration-300">
           {/* Header section */}
           <Header
             lang={lang}
             setLang={setLang}
+            theme={theme}
+            toggleTheme={toggleTheme}
             favoritesCount={favorites.length}
             scrollToReviews={handleScrollToReviews}
             onOpenQrCode={() => setShowQrModal(true)}
           />
 
           {/* Quick Return to Language Landing Selector */}
-          <div className="bg-bistro-sand/40 border-b border-bistro-gold/10 py-2.5">
+          <div className="bg-bistro-sand/40 dark:bg-emerald-950/40 border-b border-bistro-gold/10 dark:border-white/10 py-2.5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center sm:justify-between gap-3 text-xs text-center">
               <button
                 id="back-to-landing-btn"
                 onClick={() => setIsLanding(true)}
-                className="flex items-center gap-1.5 text-bistro-muted hover:text-bistro-gold-dark font-medium transition-colors cursor-pointer justify-center"
+                className="flex items-center gap-1.5 text-bistro-muted dark:text-emerald-300/80 hover:text-bistro-gold-dark dark:hover:text-emerald-200 font-medium transition-colors cursor-pointer justify-center"
               >
                 <ArrowLeft className="w-3.5 h-3.5 animate-pulse" />
                 <span>
@@ -367,7 +400,7 @@ export default function App() {
                   {lang === 'sq' && 'Ndrysho gjuhën / Fillimi'}
                 </span>
               </button>
-              <div className="flex items-center gap-1.5 text-bistro-muted text-xxs font-mono justify-center">
+              <div className="flex items-center gap-1.5 text-bistro-muted dark:text-emerald-300/80 text-xxs font-mono justify-center">
                 <Languages className="w-3.5 h-3.5 text-bistro-gold" />
                 <span>
                   {lang === 'sr' && 'Aktivan jezik: CRNOGORSKI'}
@@ -414,28 +447,28 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="relative rounded-2xl overflow-hidden bg-white border border-bistro-gold/10 p-6 sm:p-8 flex flex-col justify-between min-h-[220px] shadow-sm">
+              <div className="relative rounded-2xl overflow-hidden bg-white dark:bg-[#142318] border border-bistro-gold/10 dark:border-white/10 p-6 sm:p-8 flex flex-col justify-between min-h-[220px] shadow-sm">
                 <div className="absolute right-0 bottom-0 opacity-10 text-9xl select-none translate-x-4 translate-y-4 font-serif">
                   🍽️
                 </div>
                 <div className="space-y-2 z-10">
-                  <span className="text-xxs uppercase tracking-widest text-bistro-gold-dark font-bold">
+                  <span className="text-xxs uppercase tracking-widest text-bistro-gold-dark dark:text-emerald-400 font-bold">
                     {lang === 'sr' && 'Digitalni Koncept'}
                     {lang === 'en' && 'Digital Concept'}
                     {lang === 'sq' && 'Koncepti Digjital'}
                   </span>
-                  <h2 className="font-serif font-semibold text-2xl sm:text-3xl text-bistro-dark leading-tight">
+                  <h2 className="font-serif font-semibold text-2xl sm:text-3xl text-bistro-dark dark:text-white leading-tight">
                     {lang === 'sr' && 'Skenirajte, Naručite & Uživajte'}
                     {lang === 'en' && 'Summon services directly from your seat'}
                     {lang === 'sq' && 'Skenoni, Porositni & Shijoni'}
                   </h2>
-                  <p className="text-xs text-bistro-muted leading-relaxed max-w-sm">
+                  <p className="text-xs text-bistro-muted dark:text-gray-300 leading-relaxed max-w-sm">
                     {lang === 'sr' && 'Bez čekanja u redu! Izaberite jela, podesite posebne instrukcije za kuhinju, pošaljite porudžbinu ili pozovite konobara jednim klikom.'}
                     {lang === 'en' && 'Bypass wait times! Browse ingredients, customize kitchen notes, call the service table waiter, and view your live billing estimates instantly.'}
                     {lang === 'sq' && 'Pa pritje në radhë! Zgjidhni pjatat, rregulloni udhëzimet për kuzhinën, dërgoni porosinë ose thirrni kamerierin me një klikim.'}
                   </p>
                 </div>
-                <div className="pt-4 flex items-center gap-1.5 text-xs font-semibold text-bistro-gold-dark z-10">
+                <div className="pt-4 flex items-center gap-1.5 text-xs font-semibold text-bistro-gold-dark dark:text-emerald-400 z-10">
                   <span>🛎️</span>
                   <span>
                     {lang === 'sr' && 'Pametna digitalna daska'}
@@ -448,8 +481,8 @@ export default function App() {
 
             {/* Menu Grid section */}
             <section id="menu-selector-block" className="space-y-6">
-              <div className="border-b border-bistro-sand pb-4 text-center md:text-left">
-                <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-bistro-dark flex items-center justify-center md:justify-start gap-2">
+              <div className="border-b border-bistro-sand dark:border-white/10 pb-4 text-center md:text-left">
+                <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-bistro-dark dark:text-white flex items-center justify-center md:justify-start gap-2">
                   <Utensils className="w-5.5 h-5.5 text-bistro-gold shrink-0" />
                   {lang === 'sr' && 'Pregledajte Naš Meni'}
                   {lang === 'en' && 'Explore Our Culinary Menu'}
@@ -572,6 +605,25 @@ export default function App() {
               <DecoratedQrCode lang={lang} />
             </motion.div>
           </div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Scroll To Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            id="scroll-to-top-btn"
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.5, y: 20 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 z-40 p-3.5 rounded-full bg-bistro-dark dark:bg-emerald-800 text-bistro-gold dark:text-white border border-bistro-gold/40 dark:border-emerald-500/40 shadow-xl cursor-pointer flex items-center justify-center transition-colors hover:bg-bistro-charcoal dark:hover:bg-emerald-700"
+            title={lang === 'sr' ? 'Nazad na vrh' : lang === 'sq' ? 'Kthehu lart' : 'Back to top'}
+          >
+            <ArrowUp className="w-5 h-5" />
+          </motion.button>
         )}
       </AnimatePresence>
 
