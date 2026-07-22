@@ -5,7 +5,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { Sparkles, Utensils, Heart, Check, Info, ArrowUp, QrCode, ArrowLeft, Languages } from 'lucide-react';
+import { Sparkles, Utensils, Heart, Check, Info, ArrowUp, QrCode, ArrowLeft, Languages, MapPin } from 'lucide-react';
 import Header from './components/Header';
 import MenuGrid from './components/MenuGrid';
 import DishModal from './components/DishModal';
@@ -365,7 +365,17 @@ export default function App() {
 
           {/* Slogan Footer */}
           <div className="text-center text-[10px] text-bistro-muted font-sans relative z-10">
-            <p>{lang === 'sq' ? 'Bulevardi Teuta p.n., Ulqin, Mal i Zi' : 'Bulevar Teuta bb, Ulcinj, Montenegro'}</p>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Ulcinj"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-bistro-cream/90 hover:text-bistro-gold transition-colors cursor-pointer group"
+              title="Otvori lokaciju na Google Mapi"
+            >
+              <MapPin className="w-3 h-3 text-bistro-gold shrink-0 group-hover:scale-110 transition-transform" />
+              <span>{lang === 'sq' ? 'Bulevardi Teuta p.n., Ulqin, Mal i Zi' : 'Bulevar Teuta bb, Ulcinj, Montenegro'}</span>
+              <span className="text-bistro-gold">↗</span>
+            </a>
             <p className="mt-1 text-bistro-gold/50">Caffee&Food © 2026. All rights reserved.</p>
           </div>
         </motion.div>
@@ -534,14 +544,14 @@ export default function App() {
                   {lang === 'sq' && 'Orari i Punës'}
                 </h4>
                 <p className="text-[11px] font-mono">
-                  {lang === 'sr' && 'Ponedeljak - Nedelja: 07:00 - 00:00'}
-                  {lang === 'en' && 'Monday - Sunday: 07:00 AM - 12:00 AM'}
-                  {lang === 'sq' && 'E hënë - E diel: 07:00 - 00:00'}
+                  {lang === 'sr' && 'Ponedeljak - Nedelja: 07:00 - 23:00'}
+                  {lang === 'en' && 'Monday - Sunday: 07:00 AM - 11:00 PM'}
+                  {lang === 'sq' && 'E hënë - E diel: 07:00 - 23:00'}
                 </p>
                 <p className="text-[10px] mt-1 text-bistro-muted">
-                  {lang === 'sr' && '*Kuhinja prima porudžbine do 23:30'}
-                  {lang === 'en' && '*Kitchen accepts active orders until 11:30 PM'}
-                  {lang === 'sq' && '*Kuzhina pranon porosi deri në orën 23:30'}
+                  {lang === 'sr' && '*Kuhinja prima porudžbine do 22:30'}
+                  {lang === 'en' && '*Kitchen accepts active orders until 10:30 PM'}
+                  {lang === 'sq' && '*Kuzhina pranon porosi deri në orën 22:30'}
                 </p>
               </div>
               <div>
@@ -550,9 +560,19 @@ export default function App() {
                   {lang === 'en' && 'Our Location'}
                   {lang === 'sq' && 'Vendndodhja'}
                 </h4>
-                <p className="text-[11px]">
-                  {lang === 'sq' ? 'Bulevardi Teuta p.n., Ulqin' : 'Bulevar Teuta bb, Ulcinj'}
-                </p>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Ulcinj"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-[11px] text-bistro-cream hover:text-bistro-gold transition-colors cursor-pointer group"
+                  title={lang === 'sr' ? 'Otvori na Google Mapi' : lang === 'sq' ? 'Hap në Google Maps' : 'Open in Google Maps'}
+                >
+                  <MapPin className="w-3.5 h-3.5 text-bistro-gold shrink-0 group-hover:scale-110 transition-transform" />
+                  <span>
+                    {lang === 'sq' ? 'Bulevardi Teuta p.n., Ulqin' : 'Bulevar Teuta bb, Ulcinj'}
+                  </span>
+                  <span className="text-[10px] text-bistro-gold opacity-80">↗</span>
+                </a>
                 <p className="text-[11px] text-bistro-muted mt-1">kristijanmardjonovic@gmail.com</p>
               </div>
             </div>

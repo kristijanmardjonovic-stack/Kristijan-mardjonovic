@@ -182,25 +182,37 @@ export default function Header({
 
         {/* Quick Restaurant Metadata Banner */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-white/90 font-sans">
-          <div className="flex items-center justify-center md:justify-start gap-2.5 bg-bistro-charcoal/40 p-3 rounded-lg border border-bistro-cream/5">
-            <MapPin className="w-4 h-4 text-white shrink-0" />
+          <motion.a
+            href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Ulcinj"
+            target="_blank"
+            rel="noopener noreferrer"
+            id="location-header-link"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center justify-center md:justify-start gap-2.5 bg-bistro-charcoal/40 hover:bg-bistro-charcoal/70 p-3 rounded-lg border border-bistro-cream/10 hover:border-bistro-gold/40 transition-all cursor-pointer group"
+            title={lang === 'sr' ? 'Otvori lokaciju na Google Mapi' : lang === 'sq' ? 'Hap vendndodhjen në Google Maps' : 'Open location in Google Maps'}
+          >
+            <div className="p-1.5 bg-white/10 rounded-full group-hover:bg-bistro-gold group-hover:text-bistro-dark transition-colors">
+              <MapPin className="w-4 h-4 text-white group-hover:text-bistro-dark shrink-0 transition-colors" />
+            </div>
             <div>
-              <p className="font-medium text-bistro-cream">
-                {lang === 'sq' ? 'Bratica p.n.' : 'Bratica bb'}
+              <p className="font-medium text-bistro-cream flex items-center gap-1.5">
+                <span>{lang === 'sq' ? 'Bratica p.n.' : 'Bratica bb'}</span>
+                <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full font-sans group-hover:bg-bistro-gold group-hover:text-bistro-dark transition-colors">↗ Google Maps</span>
               </p>
               <p className="text-[10px] text-white/70">
                 {lang === 'sq' ? 'Ulqin, Mal i Zi' : lang === 'sr' ? 'Ulcinj, Crna Gora' : 'Ulcinj, Montenegro'}
               </p>
             </div>
-          </div>
+          </motion.a>
           <div className="flex items-center justify-center md:justify-start gap-2.5 bg-bistro-charcoal/40 p-3 rounded-lg border border-bistro-cream/5">
             <Clock className="w-4 h-4 text-white shrink-0" />
             <div>
               <p className="font-medium text-bistro-cream">
-                {lang === 'sr' ? 'Svaki dan: 07:00 - 00:00' : lang === 'sq' ? 'Çdo ditë: 07:00 - 00:00' : 'Every day: 07:00 AM - 12:00 AM'}
+                {lang === 'sr' ? 'Svaki dan: 07:00 - 23:00' : lang === 'sq' ? 'Çdo ditë: 07:00 - 23:00' : 'Every day: 07:00 AM - 11:00 PM'}
               </p>
               <p className="text-[10px] text-white/70">
-                {lang === 'sr' ? 'Kuhinja zatvara u 23:30' : lang === 'sq' ? 'Kuzhina mbyllet në 23:30' : 'Kitchen closes at 11:30 PM'}
+                {lang === 'sr' ? 'Kuhinja se zatvara u 22:30' : lang === 'sq' ? 'Kuzhina mbyllet në 22:30' : 'Kitchen closes at 10:30 PM'}
               </p>
             </div>
           </div>
