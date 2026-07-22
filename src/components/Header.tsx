@@ -183,7 +183,7 @@ export default function Header({
         {/* Quick Restaurant Metadata Banner */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-white/90 font-sans">
           <motion.a
-            href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Ulcinj"
+            href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Kodre+Ulcinj"
             target="_blank"
             rel="noopener noreferrer"
             id="location-header-link"
@@ -197,7 +197,7 @@ export default function Header({
             </div>
             <div>
               <p className="font-medium text-bistro-cream flex items-center gap-1.5">
-                <span>{lang === 'sq' ? 'Bratica p.n.' : 'Bratica bb'}</span>
+                <span>{lang === 'sq' ? 'Kodre p.n.' : 'Kodre bb'}</span>
                 <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full font-sans group-hover:bg-bistro-gold group-hover:text-bistro-dark transition-colors">↗ Google Maps</span>
               </p>
               <p className="text-[10px] text-white/70">

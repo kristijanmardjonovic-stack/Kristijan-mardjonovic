@@ -1313,7 +1313,7 @@ export const ALLERGENS_LABELS: Record<string, Translation> = {
 };
 
 export const DICTIONARY = {
-  restaurantName: { sr: 'Caffee&Food', en: 'Caffee&Food', sq: 'Caffee&Food' },
+  restaurantName: { sr: 'Coffee & Food', en: 'Coffee & Food', sq: 'Coffee & Food' },
   tagline: { sr: 'Mediteranski ukusi & Tradicija', en: 'Mediterranean Flavors & Tradition', sq: 'Shije Mesdhetare & Traditë' },
   searchPlaceholder: { sr: 'Pretražite jela, sastojke...', en: 'Search dishes, ingredients...', sq: 'Kërko pjatat, përbërësit...' },
   allCategories: { sr: 'Sva jela', en: 'All Dishes', sq: 'Të gjitha' },

@@ -10,10 +10,10 @@ interface DecoratedQrCodeProps {
 
 export default function DecoratedQrCode({ lang }: DecoratedQrCodeProps) {
   const [copied, setCopied] = useState(false);
-  const [qrType, setQrType] = useState<'instagram' | 'menu'>('instagram');
+  const [qrType, setQrType] = useState<'menu' | 'instagram'>('menu');
 
   const instagramUrl = "https://www.instagram.com/coffeeandfood.cafe?igsh=MWF6NXI4aGJ6N2ZzMg==";
-  const menuUrl = typeof window !== 'undefined' ? window.location.href : 'https://caffeeandfood.com';
+  const menuUrl = typeof window !== 'undefined' ? window.location.href : 'https://coffeeandfood.com';
 
   const currentUrl = qrType === 'instagram' ? instagramUrl : menuUrl;
 
@@ -89,7 +89,7 @@ export default function DecoratedQrCode({ lang }: DecoratedQrCodeProps) {
       <div className="mb-3 z-10">
         <span className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold flex items-center justify-center gap-1">
           <Sparkles className="w-3 h-3 text-emerald-400 animate-pulse" />
-          Caffee & Food
+          Coffee & Food
         </span>
         <h3 className="font-serif text-lg font-semibold text-bistro-cream mt-0.5">{t('title')}</h3>
         <p className="text-[11px] text-emerald-100/70 leading-tight max-w-xs mt-0.5">{t('subtitle')}</p>
@@ -97,17 +97,6 @@ export default function DecoratedQrCode({ lang }: DecoratedQrCodeProps) {
 
       {/* QR Code Mode Selector Tabs */}
       <div className="flex bg-bistro-charcoal border border-white/10 p-1 rounded-full mb-4 z-10 w-full max-w-[240px]">
-        <button
-          onClick={() => setQrType('instagram')}
-          className={`flex-1 py-1 px-2 rounded-full text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
-            qrType === 'instagram'
-              ? 'bg-emerald-700 text-white shadow-md'
-              : 'text-white/70 hover:text-white'
-          }`}
-        >
-          <Instagram className="w-3.5 h-3.5" />
-          <span>{t('instagramTab')}</span>
-        </button>
         <button
           onClick={() => setQrType('menu')}
           className={`flex-1 py-1 px-2 rounded-full text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
@@ -118,6 +107,17 @@ export default function DecoratedQrCode({ lang }: DecoratedQrCodeProps) {
         >
           <Globe className="w-3.5 h-3.5" />
           <span>{t('menuTab')}</span>
+        </button>
+        <button
+          onClick={() => setQrType('instagram')}
+          className={`flex-1 py-1 px-2 rounded-full text-xs font-semibold flex items-center justify-center gap-1.5 transition-all cursor-pointer ${
+            qrType === 'instagram'
+              ? 'bg-emerald-700 text-white shadow-md'
+              : 'text-white/70 hover:text-white'
+          }`}
+        >
+          <Instagram className="w-3.5 h-3.5" />
+          <span>{t('instagramTab')}</span>
         </button>
       </div>
 
@@ -133,15 +133,23 @@ export default function DecoratedQrCode({ lang }: DecoratedQrCodeProps) {
         <div className="absolute -bottom-1 -right-1 w-5 h-5 border-b-2 border-r-2 border-emerald-600" />
 
         {/* Real Dynamic Scannable QR Code */}
-        <div className="p-1 bg-white rounded-lg">
-          <QRCodeSVG
-            value={currentUrl}
-            size={160}
-            bgColor="#FFFFFF"
-            fgColor="#000000"
-            level="H"
-            marginSize={1}
-          />
+        <div className="p-1 bg-white rounded-lg flex items-center justify-center">
+          {qrType === 'menu' ? (
+            <img
+              src="/src/assets/images/user_menu_qr.svg"
+              alt="Coffee & Food Digital Menu QR Code"
+              className="w-[160px] h-[160px] object-contain rounded"
+            />
+          ) : (
+            <QRCodeSVG
+              value={currentUrl}
+              size={160}
+              bgColor="#FFFFFF"
+              fgColor="#000000"
+              level="H"
+              marginSize={1}
+            />
+          )}
         </div>
       </div>
 

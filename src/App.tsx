@@ -211,7 +211,7 @@ export default function App() {
                 transition={{ delay: 0.5, duration: 0.8, ease: 'easeOut' }}
                 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wider text-bistro-gold"
               >
-                Caffee&Food
+                Coffee & Food
               </motion.h1>
 
               {/* Elegant Welcome translations list cascading down */}
@@ -253,7 +253,7 @@ export default function App() {
               transition={{ delay: 2.8, duration: 0.8 }}
               className="absolute bottom-10 text-[10px] uppercase tracking-widest text-bistro-muted font-mono"
             >
-              Caffee & Food Digital Platform
+              Coffee & Food Digital Platform
             </motion.div>
           </motion.div>
         )}
@@ -279,7 +279,7 @@ export default function App() {
               C&F
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl tracking-wide font-bold text-bistro-gold">
-              Caffee&Food
+              Coffee & Food
             </h2>
             <div className="h-px bg-gradient-to-r from-transparent via-bistro-gold/20 to-transparent w-40 mx-auto" />
             <p className="text-xxs uppercase tracking-widest text-bistro-muted font-mono">
@@ -366,17 +366,17 @@ export default function App() {
           {/* Slogan Footer */}
           <div className="text-center text-[10px] text-bistro-muted font-sans relative z-10">
             <a
-              href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Ulcinj"
+              href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Kodre+Ulcinj"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-bistro-cream/90 hover:text-bistro-gold transition-colors cursor-pointer group"
               title="Otvori lokaciju na Google Mapi"
             >
               <MapPin className="w-3 h-3 text-bistro-gold shrink-0 group-hover:scale-110 transition-transform" />
-              <span>{lang === 'sq' ? 'Bulevardi Teuta p.n., Ulqin, Mal i Zi' : 'Bulevar Teuta bb, Ulcinj, Montenegro'}</span>
+              <span>{lang === 'sq' ? 'Kodre p.n., Ulqin, Mal i Zi' : 'Kodre bb, Ulcinj, Montenegro'}</span>
               <span className="text-bistro-gold">↗</span>
             </a>
-            <p className="mt-1 text-bistro-gold/50">Caffee&Food © 2026. All rights reserved.</p>
+            <p className="mt-1 text-bistro-gold/50">Coffee & Food © 2026. All rights reserved.</p>
           </div>
         </motion.div>
       )}
@@ -561,7 +561,7 @@ export default function App() {
                   {lang === 'sq' && 'Vendndodhja'}
                 </h4>
                 <a
-                  href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Ulcinj"
+                  href="https://www.google.com/maps/search/?api=1&query=Coffee+%26+Food+Ugostiteljska+radnja+Kodre+Ulcinj"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-1.5 text-[11px] text-bistro-cream hover:text-bistro-gold transition-colors cursor-pointer group"
@@ -569,7 +569,7 @@ export default function App() {
                 >
                   <MapPin className="w-3.5 h-3.5 text-bistro-gold shrink-0 group-hover:scale-110 transition-transform" />
                   <span>
-                    {lang === 'sq' ? 'Bulevardi Teuta p.n., Ulqin' : 'Bulevar Teuta bb, Ulcinj'}
+                    {lang === 'sq' ? 'Kodre p.n., Ulqin' : 'Kodre bb, Ulcinj'}
                   </span>
                   <span className="text-[10px] text-bistro-gold opacity-80">↗</span>
                 </a>
