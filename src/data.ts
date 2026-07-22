@@ -49,7 +49,7 @@ export const DISHES: Dish[] = [
   {
     id: 'brk_4',
     name: { sr: 'Omlet / Kajgana po želji', en: 'Omelette / Scrambled Eggs', sq: 'Omëletë / Vezë të Rrahura' },
-    description: { sr: 'Tri jaja, sir, povrće, goveđi pršut, mix zelenih salata i ajvar (300g).', en: 'Three eggs, cheese, veggies, beef prosciutto, greens, and ajvar.', sq: 'Tri vezë, djathë, perime, prshutë gjedhi, sallatë dhe ajvar.' },
+    description: { sr: 'Tri jaja, sir, povrće, goveđi pršut, mix zelenih salata i domaći ajvar (300g).', en: 'Three eggs, cheese, veggies, beef prosciutto, mixed greens, and house ajvar (300g).', sq: 'Tri vezë, djathë, perime, prshutë gjedhi, sallatë miks dhe ajvar shtëpie (300g).' },
     price: 5.00,
     category: Category.BREAKFAST,
     image: 'https://images.unsplash.com/photo-1494597564530-871f2b93ac55?w=500&auto=format&fit=crop&q=80',
@@ -58,7 +58,35 @@ export const DISHES: Dish[] = [
     calories: 450,
     prepTime: 10,
     featured: true,
-    ingredients: { sr: ['3 jaja', 'Goveđi pršut', 'Domaći sir', 'Domaći ajvar'], en: ['3 eggs', 'Beef prosciutto', 'Local cheese', 'House ajvar'], sq: ['3 vezë', 'Prshutë gjedhi', 'Djathë shtëpie', 'Ajvar shtëpie'] }
+    ingredients: { sr: ['3 jaja', 'Goveđi pršut', 'Domaći sir', 'Povrće', 'Mix zelenih salata', 'Domaći ajvar'], en: ['3 eggs', 'Beef prosciutto', 'Local cheese', 'Vegetables', 'Mixed greens', 'House ajvar'], sq: ['3 vezë', 'Prshutë gjedhi', 'Djathë shtëpie', 'Perime', 'Sallatë miks', 'Ajvar shtëpie'] }
+  },
+  {
+    id: 'brk_posirana_losos',
+    name: { sr: 'Poširana jaja sa lososom', en: 'Poached Eggs with Salmon', sq: 'Vezë të Poshuara me Salmon' },
+    description: { sr: '2 poširana jaja, tost hleb, dimljeni losos, pire od avokada, mix zelenih salata, cherry paradajz i holandez sos (280g).', en: '2 poached eggs, toast bread, smoked salmon, avocado puree, mixed greens, cherry tomatoes, and hollandaise sauce (280g).', sq: '2 vezë të poshuara, bukë tost, salmon i tymosur, pure avokadoje, sallatë miks, domate qersi dhe salcë holandeze (280g).' },
+    price: 6.50,
+    category: Category.BREAKFAST,
+    image: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=500&auto=format&fit=crop&q=80',
+    allergens: ['egg', 'fish', 'dairy', 'gluten'],
+    dietary: [],
+    calories: 480,
+    prepTime: 12,
+    featured: true,
+    ingredients: { sr: ['2 jaja', 'Tost hleb', 'Dimljeni losos', 'Pire od avokada', 'Mix zelenih salata', 'Cherry paradajz', 'Holandez sos'], en: ['2 eggs', 'Toast bread', 'Smoked salmon', 'Avocado puree', 'Mixed greens', 'Cherry tomatoes', 'Hollandaise sauce'], sq: ['2 vezë', 'Bukë tost', 'Salmon i tymosur', 'Pure avokadoje', 'Sallatë miks', 'Domate qersi', 'Salcë holandeze'] }
+  },
+  {
+    id: 'brk_mediteranska_brusketa',
+    name: { sr: 'Mediteranska brusketa', en: 'Mediterranean Bruschetta', sq: 'Brusketa Mediterane' },
+    description: { sr: 'Hrskava brusketa sa 2 jaja, tunjevinom, sirom, svežom rukolom i marinadom (250g).', en: 'Crispy bruschetta topped with 2 eggs, tuna, cheese, fresh arugula, and marinade (250g).', sq: 'Brusketa me 2 vezë, ton peshk, djathë, rukola të freskët dhe marinadë (250g).' },
+    price: 4.50,
+    category: Category.BREAKFAST,
+    image: 'https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?w=500&auto=format&fit=crop&q=80',
+    allergens: ['egg', 'fish', 'dairy', 'gluten'],
+    dietary: [],
+    calories: 390,
+    prepTime: 10,
+    featured: false,
+    ingredients: { sr: ['Brusketa hleb', '2 jaja', 'Tunjevina', 'Sir', 'Rukola', 'Marinada'], en: ['Bruschetta bread', '2 eggs', 'Tuna', 'Cheese', 'Arugula', 'Marinade'], sq: ['Bukë bruskete', '2 vezë', 'Ton peshk', 'Djathë', 'Rukola', 'Marinadë'] }
   },
   {
     id: 'brk_5',
@@ -91,6 +119,48 @@ export const DISHES: Dish[] = [
     ingredients: { sr: ['Domaći sir', 'Edamer', 'Mocarela', 'Gorgonzola', 'Dimljeni sir'], en: ['Local cheese', 'Edam', 'Mozzarella', 'Gorgonzola', 'Smoked cheese'], sq: ['Djathë shtëpie', 'Edamer', 'Mocarelë', 'Gorgonxolë', 'Djathë i tymosur'] }
   },
   {
+    id: 'fod_tost_sendvic',
+    name: { sr: 'Tost sendvič', en: 'Toast Sandwich', sq: 'Tost Sanduiç' },
+    description: { sr: 'Goveđi pršut, sir, mix zelenih salata, pomfrit i hamburger sos (250g).', en: 'Beef prosciutto, cheese, mixed greens, french fries, and burger sauce (250g).', sq: 'Prshutë gjedhi, djathë, sallatë miks, patate të skuqura dhe salcë burgeri (250g).' },
+    price: 4.20,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=500&auto=format&fit=crop&q=80',
+    allergens: ['gluten', 'dairy'],
+    dietary: [],
+    calories: 510,
+    prepTime: 10,
+    featured: false,
+    ingredients: { sr: ['Goveđi pršut', 'Sir', 'Mix zelenih salata', 'Pomfrit', 'Hamburger sos'], en: ['Beef prosciutto', 'Cheese', 'Mixed greens', 'French fries', 'Burger sauce'], sq: ['Prshutë gjedhi', 'Djathë', 'Sallatë miks', 'Patate të skuqura', 'Salcë burgeri'] }
+  },
+  {
+    id: 'fod_pesto_piletina',
+    name: { sr: 'Sendvič pesto piletina', en: 'Pesto Chicken Sandwich', sq: 'Sanduiç me Pulë Pesto' },
+    description: { sr: 'Pohovana piletina, mocarela, mix zelenih salata, pesto sos, paradajz i pomfrit (300g).', en: 'Crispy fried chicken, mozzarella, mixed greens, pesto sauce, tomato, and french fries (300g).', sq: 'Pulë e skuqur, mocarelë, sallatë miks, salcë pesto, domate dhe patate të skuqura (300g).' },
+    price: 7.00,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=500&auto=format&fit=crop&q=80',
+    allergens: ['gluten', 'dairy', 'nuts'],
+    dietary: [],
+    calories: 620,
+    prepTime: 12,
+    featured: true,
+    ingredients: { sr: ['Pohovana piletina', 'Mocarela', 'Mix zelenih salata', 'Pesto sos', 'Paradajz', 'Pomfrit'], en: ['Crispy chicken', 'Mozzarella', 'Mixed greens', 'Pesto sauce', 'Tomato', 'French fries'], sq: ['Pulë e skuqur', 'Mocarelë', 'Sallatë miks', 'Salcë pesto', 'Domate', 'Patate të skuqura'] }
+  },
+  {
+    id: 'fod_bbq_krilca',
+    name: { sr: 'BBQ krilca', en: 'BBQ Wings', sq: 'Krahë Pule BBQ' },
+    description: { sr: 'Pohovana pileća krilca, coleslaw salata, pomfrit i BBQ sos (300g).', en: 'Crispy fried chicken wings, coleslaw salad, french fries, and BBQ sauce (300g).', sq: 'Krahë pule të skuqura, sallatë coleslaw, patate të skuqura dhe salcë BBQ (300g).' },
+    price: 8.00,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=500&auto=format&fit=crop&q=80',
+    allergens: ['gluten', 'dairy'],
+    dietary: [],
+    calories: 690,
+    prepTime: 15,
+    featured: true,
+    ingredients: { sr: ['Pohovana krilca', 'Coleslaw salata', 'Pomfrit', 'BBQ sos'], en: ['Crispy wings', 'Coleslaw salad', 'French fries', 'BBQ sauce'], sq: ['Krahë pule të skuqura', 'Sallatë coleslaw', 'Patate të skuqura', 'Salcë BBQ'] }
+  },
+  {
     id: 'fod_2',
     name: { sr: 'Hamburger', en: 'Classic Hamburger', sq: 'Hamburger Klasik' },
     description: { sr: 'Sočan juneći burger (150g) poslužen u mekoj domaćoj lepinji.', en: 'Juicy 150g beef burger served inside a warm local lepinja bread.', sq: 'Hamburger i lëngshëm me mish gjedhi 150g në bukë të ngrohtë lepinja.' },
@@ -119,6 +189,20 @@ export const DISHES: Dish[] = [
     ingredients: { sr: ['Pileći file', 'Domaća lepinja', 'Salate'], en: ['Chicken breast', 'Lepinja bread', 'Salads'], sq: ['File pule', 'Bukë lepinja', 'Sallatë'] }
   },
   {
+    id: 'fod_batak_lepinja',
+    name: { sr: 'Pileći batak u lepinji', en: 'Chicken Thigh in Lepinja', sq: 'Kofshë Pule në Lepinja' },
+    description: { sr: 'Sočni pileći batak u mekoj lepinji sa svežim salatama (250g).', en: 'Juicy chicken thigh in warm lepinja bread with fresh salads (250g).', sq: 'Kofshë pule e lëngshme në bukë lepinja me sallatë të freskët (250g).' },
+    price: 5.00,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1606755962773-d324e0a13086?w=500&auto=format&fit=crop&q=80',
+    allergens: ['gluten'],
+    dietary: [],
+    calories: 490,
+    prepTime: 12,
+    featured: false,
+    ingredients: { sr: ['Pileći batak', 'Lepinja', 'Mix salate'], en: ['Chicken thigh', 'Lepinja bread', 'Mixed salad'], sq: ['Kofshë pule', 'Bukë lepinja', 'Sallatë miks'] }
+  },
+  {
     id: 'fod_4',
     name: { sr: 'Gurmanska u lepinji', en: 'Gourmet Patty in Lepinja', sq: 'Gurmane në Lepinja' },
     description: { sr: 'Pljeskavica punjena sirom i začinima (250g) u toploj lepinji.', en: 'Spiced beef patty (250g) stuffed with cheese inside a warm lepinja.', sq: 'Pleskavicë gurmane e mbushur me djathë (250g) në bukë të ngrohtë.' },
@@ -133,6 +217,20 @@ export const DISHES: Dish[] = [
     ingredients: { sr: ['Gurmansko meso', 'Sir', 'Lepinja'], en: ['Gourmet meat', 'Cheese', 'Lepinja bread'], sq: ['Mish gurman', 'Djathë', 'Bukë lepinja'] }
   },
   {
+    id: 'fod_batak_marinirani',
+    name: { sr: 'Marinirani pileći batak (tanjir)', en: 'Marinated Chicken Thigh Platter', sq: 'Kofshë Pule e Marinuar (Pjatë)' },
+    description: { sr: 'Marinirani pileći batak, lepinja, mix salate, pomfrit i urnebes sos (350g).', en: 'Marinated chicken thigh, lepinja bread, mixed salad, french fries, and urnebes spread (350g).', sq: 'Kofshë pule e marinuar, lepinja, sallatë miks, patate të skuqura dhe urnebes (350g).' },
+    price: 9.00,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=500&auto=format&fit=crop&q=80',
+    allergens: ['gluten', 'dairy'],
+    dietary: ['spicy'],
+    calories: 680,
+    prepTime: 18,
+    featured: true,
+    ingredients: { sr: ['Marinirani batak', 'Lepinja', 'Mix salate', 'Pomfrit', 'Urnebes'], en: ['Marinated chicken thigh', 'Lepinja bread', 'Mixed salad', 'French fries', 'Urnebes spread'], sq: ['Kofshë pule e marinuar', 'Bukë lepinja', 'Sallatë miks', 'Patate të skuqura', 'Urnebes'] }
+  },
+  {
     id: 'fod_5',
     name: { sr: 'Pileći file (tanjir)', en: 'Grilled Chicken Platter', sq: 'File Pule (Pjatë)' },
     description: { sr: 'Pileći fileti (350g) sa pomfritom, miksom zelenih salata i aurora sosom.', en: 'Grilled chicken (350g) with fries, mixed salad, and aurora sauce.', sq: 'File pule në skarë (350g) me patate të skuqura, sallatë dhe salcë aurora.' },
@@ -145,6 +243,20 @@ export const DISHES: Dish[] = [
     prepTime: 15,
     featured: false,
     ingredients: { sr: ['Piletina', 'Pomfrit', 'Miks salata', 'Aurora sos'], en: ['Chicken', 'French fries', 'Mixed salad', 'Aurora sauce'], sq: ['Mish pule', 'Patate të skuqura', 'Sallatë', 'Salcë aurora'] }
+  },
+  {
+    id: 'fod_pljeskavica_tanjir',
+    name: { sr: 'Pljeskavica (tanjir)', en: 'Beef Patty Platter', sq: 'Pljeskavicë (Pjatë)' },
+    description: { sr: 'Lepinja, juneći burger, luk, mix salate i ajvar (300g).', en: 'Beef burger patty served with lepinja bread, onions, mixed salad, and ajvar (300g).', sq: 'Pleskavicë gjedhi me bukë lepinja, qepë, sallatë miks dhe ajvar (300g).' },
+    price: 9.00,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=500&auto=format&fit=crop&q=80',
+    allergens: ['gluten'],
+    dietary: [],
+    calories: 650,
+    prepTime: 15,
+    featured: false,
+    ingredients: { sr: ['Juneći burger', 'Lepinja', 'Luk', 'Mix salate', 'Domaći ajvar'], en: ['Beef patty', 'Lepinja bread', 'Onion', 'Mixed salad', 'House ajvar'], sq: ['Qofte gjedhi', 'Bukë lepinja', 'Qepë', 'Sallatë miks', 'Ajvar shtëpie'] }
   },
   {
     id: 'fod_6',
@@ -173,6 +285,20 @@ export const DISHES: Dish[] = [
     prepTime: 12,
     featured: true,
     ingredients: { sr: ['Ćevapi', 'Lepinja', 'Luk', 'Pomfrit'], en: ['Cevapi', 'Lepinja bread', 'Onions', 'French fries'], sq: ['Qebapë', 'Bukë lepinja', 'Qepë', 'Patate'] }
+  },
+  {
+    id: 'fod_pomfrit',
+    name: { sr: 'Pomfrit', en: 'French Fries', sq: 'Patate të Skuqura' },
+    description: { sr: 'Hrskavi zlatni pomfrit (100g).', en: 'Crispy golden french fries (100g).', sq: 'Patate të skuqura krokante (100g).' },
+    price: 2.00,
+    category: Category.FOOD,
+    image: 'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=500&auto=format&fit=crop&q=80',
+    allergens: [],
+    dietary: ['veg', 'vegan', 'gf'],
+    calories: 290,
+    prepTime: 5,
+    featured: false,
+    ingredients: { sr: ['Pomfrit'], en: ['French fries'], sq: ['Patate të skuqura'] }
   },
 
   // --- HOT DRINKS (Kafa & Topli napici) ---

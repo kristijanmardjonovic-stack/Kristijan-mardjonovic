@@ -4,6 +4,8 @@ import { Copy, Check, Printer, Share2, Sparkles, QrCode, Instagram, Globe } from
 import { QRCodeSVG } from 'qrcode.react';
 import { Language } from '../types';
 
+const menuQrUrl = new URL('../assets/images/user_menu_qr.svg', import.meta.url).href;
+
 interface DecoratedQrCodeProps {
   lang: Language;
 }
@@ -136,7 +138,7 @@ export default function DecoratedQrCode({ lang }: DecoratedQrCodeProps) {
         <div className="p-1 bg-white rounded-lg flex items-center justify-center">
           {qrType === 'menu' ? (
             <img
-              src="/src/assets/images/user_menu_qr.svg"
+              src={menuQrUrl}
               alt="Coffee & Food Digital Menu QR Code"
               className="w-[160px] h-[160px] object-contain rounded"
             />
