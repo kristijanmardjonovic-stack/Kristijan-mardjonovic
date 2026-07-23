@@ -1,4 +1,4 @@
-import { Globe, Clock, MapPin, ShoppingBag, Heart, QrCode, Sparkles, Instagram, Sun, Moon } from 'lucide-react';
+import { Globe, Clock, MapPin, ShoppingBag, Heart, QrCode, Sparkles, Instagram, Sun, Moon, Wifi } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { DICTIONARY } from '../data';
 import { Language } from '../types';
@@ -11,6 +11,7 @@ interface HeaderProps {
   favoritesCount: number;
   scrollToReviews: () => void;
   onOpenQrCode: () => void;
+  onOpenWifi?: () => void;
 }
 
 export default function Header({
@@ -21,6 +22,7 @@ export default function Header({
   favoritesCount,
   scrollToReviews,
   onOpenQrCode,
+  onOpenWifi,
 }: HeaderProps) {
   return (
     <header id="restaurant-header" className="relative bg-bistro-dark text-bistro-cream border-b border-bistro-gold/20 overflow-hidden">
@@ -130,6 +132,21 @@ export default function Header({
             >
               <QrCode className="w-4 h-4" />
             </motion.button>
+
+            {/* Wi-Fi Trigger */}
+            {onOpenWifi && (
+              <motion.button
+                id="wifi-trigger-btn"
+                whileTap={{ scale: 0.92 }}
+                whileHover={{ scale: 1.08 }}
+                onClick={onOpenWifi}
+                className="p-2 bg-emerald-900/80 hover:bg-emerald-800 border border-emerald-500/40 rounded-full transition-all text-emerald-300 cursor-pointer flex items-center gap-1 text-xs font-bold px-2.5"
+                title="Wi-Fi Konekcija"
+              >
+                <Wifi className="w-3.5 h-3.5 animate-pulse text-emerald-400" />
+                <span className="hidden sm:inline">Wi-Fi</span>
+              </motion.button>
+            )}
 
             {/* Instagram Link Button */}
             <motion.a

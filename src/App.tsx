@@ -11,6 +11,7 @@ import MenuGrid from './components/MenuGrid';
 import DishModal from './components/DishModal';
 import ReviewSection from './components/ReviewSection';
 import DecoratedQrCode from './components/DecoratedQrCode';
+import WifiModal from './components/WifiModal';
 import { DISHES, REVIEWS, DICTIONARY } from './data';
 import { Dish, Review, Language } from './types';
 
@@ -24,6 +25,7 @@ export default function App() {
   });
 
   const [showQrModal, setShowQrModal] = useState(false);
+  const [showWifiModal, setShowWifiModal] = useState(false);
 
   // 2. Core States with local storage integration
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
@@ -393,6 +395,7 @@ export default function App() {
             favoritesCount={favorites.length}
             scrollToReviews={handleScrollToReviews}
             onOpenQrCode={() => setShowQrModal(true)}
+            onOpenWifi={() => setShowWifiModal(true)}
           />
 
           {/* Quick Return to Language Landing Selector */}
@@ -627,6 +630,14 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      {/* 5. Wi-Fi Connection Modal */}
+      <WifiModal
+        isOpen={showWifiModal}
+        onClose={() => setShowWifiModal(false)}
+        lang={lang}
+        showToast={triggerToast}
+      />
 
       {/* Floating Scroll To Top Button */}
       <AnimatePresence>
